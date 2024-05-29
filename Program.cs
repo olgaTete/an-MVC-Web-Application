@@ -25,3 +25,17 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+IApplicationBuilder applicationBuilder = app.UseEndpoints(endpoints =>
+{
+    // Custom route for FeverCheck
+    endpoints.MapControllerRoute(
+        name: "feverCheck",
+        pattern: "FeverCheck",
+        defaults: new { controller = "Doctor", action = "CheckTemperature" });
+
+    // Default route
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
