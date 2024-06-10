@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model MyFirstWebApp.Models.GuessingGame
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Guess the Number Game</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <p>@ViewBag.Message</p>
+    <p>Number of guesses: @ViewBag.GuessCount</p>
+    <label for="Guess">Enter your guess (1-100):</label>
+    @Html.TextBoxFor(model => model.Guess, new { required = "required" })
+    <input type="submit" value="Guess" />
+}
+
